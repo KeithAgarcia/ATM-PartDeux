@@ -1,13 +1,29 @@
 import java.util.Scanner;
 
+
 public class ATM {
     public static Scanner scanner = new Scanner(System.in);
     public static Option option = new Option();
-    public static Customer customer = new Customer();
+    String choiceTwo;
+
 
     public static void main(String[] args) throws Exception {
-        customer.chooseName();
         option.chooseOption();
-        option.answer();
+        option.chooseName();
+
     }
+
+    public void answer(){
+        System.out.println("Would you like to make another transaction? [y/n]");
+        choiceTwo = ATM.scanner.nextLine();
+
+        if (choiceTwo.equalsIgnoreCase("y")){
+            option.chooseName();
+        }
+        if (choiceTwo.equalsIgnoreCase("n")){
+            option.end();
+            System.exit(0);
+        }
+    }
+
 }

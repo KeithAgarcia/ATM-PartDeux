@@ -3,7 +3,6 @@ import java.util.HashMap;
 public class Option {
     String choice;
     String name;
-    Double x;
     Double a;
     public static Option option = new Option();
     public static ATM aTM = new ATM();
@@ -15,7 +14,6 @@ public class Option {
         account.put("Daniel", 30.10);
         System.out.println("Hello, what is your name?");
         name = ATM.scanner.nextLine();
-        x = account.get(name);
     }
         public void chooseName() {
             System.out.println("Please choose one of the following options");
@@ -32,24 +30,25 @@ public class Option {
                 aTM.answer();
             } if (choice.equalsIgnoreCase("2")) {
                 System.out.println("How much would you like to deposit?");
-                String deposit = ATM.scanner.nextLine();
-                Integer newDeposit = Integer.valueOf(deposit);
-                a = (x + newDeposit);
+                String depositString = ATM.scanner.nextLine();
+                Integer deposit = Integer.valueOf(depositString);
+                a = (account.get(name) + deposit);
                 account.put(name, a);
-                System.out.println(("You have added $") + deposit + (" to your account. Your new balance is $") + (a));
+                System.out.println(("You have added $") + depositString + (" to your account. Your new balance is $") + (a));
                 aTM.answer();
             } if (choice.equalsIgnoreCase("3")) {
+                Double x = account.get(name);
                 System.out.println("How much would you like to withdraw?");
-                String withdraw = ATM.scanner.nextLine();
-                Integer newWithdraw = Integer.valueOf(withdraw);
+                String withdrawString = ATM.scanner.nextLine();
+                Integer withdraw = Integer.valueOf(withdrawString);
                 {
-                    if (newWithdraw > x) {
+                    if (withdraw > x) {
                         System.out.println("You don't have enough money bro! Go Home!");
                         aTM.answer();
-                    } else if (newWithdraw < x) {
-                        a = (x - newWithdraw);
+                    } else if (withdraw < x) {
+                        a = (x - withdraw);
                         account.put(name, a);
-                        System.out.println("You withdrew $" + newWithdraw + ". You're current balance is $" + (a));
+                        System.out.println("You withdrew $" + withdraw + ". You're current balance is $" + (a));
                         aTM.answer();
                     }
                 }

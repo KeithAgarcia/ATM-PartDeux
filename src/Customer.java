@@ -18,15 +18,8 @@ public class Customer {
         account.put("Daniel", 30.10);
 
         name = ATM.scanner.nextLine();
-
         x = account.get(name);
 
         System.out.println("You have $" + x);
-
-
-
-        account.put("Keith", 100.50);
-        account.put("Ben", 15.75);
-        account.put("Daniel", 30.10);
     }
 }

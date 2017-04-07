@@ -7,7 +7,7 @@ public class ATM {
     String anothTransac;
 
     public static void main(String[] args) throws Exception {
-        bankAccount.name();
+        bankAccount.account();
         bankAccount.selectedOption();
     }
 
@@ -16,7 +16,7 @@ public class ATM {
         anothTransac = ATM.scanner.nextLine();
 
         if (anothTransac.equalsIgnoreCase("y")){
-            bankAccount.name();
+            bankAccount.account();
         }
         if (anothTransac.equalsIgnoreCase("n")){
             bankAccount.end();

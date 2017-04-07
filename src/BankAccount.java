@@ -16,18 +16,17 @@ public class BankAccount {
         account = ATM.scanner.nextLine();
     }
         public void selectedOption() {
+            currentMoney = (bank.get(account));
             System.out.println("Please choose one of the following options");
             System.out.println("[1] view bank balance");
             System.out.println("[2] to make a deposit");
             System.out.println("[3] to withdraw");
             System.out.println("[4] to cancel");
-
             selection = ATM.scanner.nextLine();
-            currentMoney = (bank.get(account));
 
             if (selection.equalsIgnoreCase("1")) {
                 System.out.println("Hello you have $" + currentMoney);
-                aTM.toExit();
+                aTM.askToExit();
 
             } if (selection.equalsIgnoreCase("2")) {
                 System.out.println("How much would you like to deposit?");
@@ -36,7 +35,7 @@ public class BankAccount {
                 currentMoney = (bank.get(account) + depositAmount);
                 bank.put(account, currentMoney);
                 System.out.println(("You have added $") + deposit + (" to your bank. Your new balance is $") + (currentMoney));
-                aTM.toExit();
+                aTM.askToExit();
 
             } if (selection.equalsIgnoreCase("3")) {
                 currentMoney = bank.get(account);
@@ -46,15 +45,14 @@ public class BankAccount {
                 {
                     if (withdrawAmount > currentMoney) {
                         System.out.println("You don't have enough money bro! Go Home!");
-                        aTM.toExit();
+                        aTM.askToExit();
                     } else if (withdrawAmount < currentMoney) {
                         currentMoney = (currentMoney - withdrawAmount);
                         bank.put(account, currentMoney);
                         System.out.println("You withdrew $" + withdrawAmount + ". You're current balance is $" + (currentMoney));
-                        aTM.toExit();
+                        aTM.askToExit();
                     }
                 }
-
             } if (selection.equalsIgnoreCase("4")) {
                 bankAccount.end();
                 System.exit(0);

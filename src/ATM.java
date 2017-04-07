@@ -11,7 +11,7 @@ public class ATM {
         bankAccount.selectedOption();
     }
 
-    public void toExit(){
+    public void askToExit(){
         System.out.println("Would you like to make another transaction? [y/n]");
         anothTransac = ATM.scanner.nextLine();
 

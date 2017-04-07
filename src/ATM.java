@@ -16,7 +16,7 @@ public class ATM {
         anothTransac = ATM.scanner.nextLine();
 
         if (anothTransac.equalsIgnoreCase("y")){
-            bankAccount.account();
+            bankAccount.selectedOption();
         }
         if (anothTransac.equalsIgnoreCase("n")){
             bankAccount.end();

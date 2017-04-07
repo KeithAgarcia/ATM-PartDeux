@@ -12,7 +12,7 @@ public class BankAccount {
         bank.put("Keith", 100.50);
         bank.put("Ben", 15.75);
         bank.put("Daniel", 30.10);
-        System.out.println("Hello, what is your account?");
+        System.out.println("Hello, what is your name");
         account = ATM.scanner.nextLine();
     }
         public void selectedOption() {
@@ -23,6 +23,7 @@ public class BankAccount {
             System.out.println("[4] to cancel");
 
             selection = ATM.scanner.nextLine();
+            currentMoney = (bank.get(account));
 
             if (selection.equalsIgnoreCase("1")) {
                 System.out.println("Hello you have $" + currentMoney);

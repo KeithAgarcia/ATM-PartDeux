@@ -3,25 +3,23 @@ import java.util.Scanner;
 
 public class ATM {
     public static Scanner scanner = new Scanner(System.in);
-    public static Option option = new Option();
-    String choiceTwo;
-
+    public static BankAccount bankAccount = new BankAccount();
+    String anothTransac;
 
     public static void main(String[] args) throws Exception {
-        option.chooseOption();
-        option.chooseName();
-
+        bankAccount.name();
+        bankAccount.selectedOption();
     }
 
-    public void answer(){
+    public void toExit(){
         System.out.println("Would you like to make another transaction? [y/n]");
-        choiceTwo = ATM.scanner.nextLine();
+        anothTransac = ATM.scanner.nextLine();
 
-        if (choiceTwo.equalsIgnoreCase("y")){
-            option.chooseName();
+        if (anothTransac.equalsIgnoreCase("y")){
+            bankAccount.name();
         }
-        if (choiceTwo.equalsIgnoreCase("n")){
-            option.end();
+        if (anothTransac.equalsIgnoreCase("n")){
+            bankAccount.end();
             System.exit(0);
         }
     }

@@ -43,7 +43,9 @@ public class BankAccount {
             System.out.println("[1] view balance");
             System.out.println("[2] to make a deposit");
             System.out.println("[3] to withdraw");
-            System.out.println("[4] to cancel");
+            System.out.println("[4] to transfer funds" );
+            System.out.println("[5] to remove account");
+            System.out.println("[6] to cancel");
             selection = ATM.scanner.nextLine();
 
             if (selection.equalsIgnoreCase("1")) {
@@ -75,7 +77,13 @@ public class BankAccount {
                         aTM.askToExit();
                     }
                 }
-            } if (selection.equalsIgnoreCase("4")) {
+
+            } if (selection.equalsIgnoreCase("5")){
+                    System.out.println("Adios Amigo!");
+                    customers.remove(accountName);
+                    System.exit(0);
+                }
+                if (selection.equalsIgnoreCase("6")) {
                 bankAccount.end();
                 System.exit(0);
             }

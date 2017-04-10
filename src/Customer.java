@@ -11,7 +11,7 @@ public class Customer {
     HashMap <String, Double> account = new HashMap<>();
 
     public void chooseName(){
-        System.out.println("Hello, what is your accountName?");
+        System.out.println("Hello, what is your customerName?");
         Customer customer = new Customer();
         account.put("Keith", 100.50);
         account.put("Ben", 15.75);

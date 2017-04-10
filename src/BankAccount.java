@@ -59,6 +59,12 @@ public class BankAccount {
                 System.out.println("How much would you like to deposit?");
                 String deposit = ATM.scanner.nextLine();
                 Integer depositAmount = Integer.valueOf(deposit);
+                if (depositAmount < 0){
+                    depositAmount = 0;
+                    System.out.println("Incorrect amount entered");
+                    System.out.println("");
+                    selectedOption();
+                }
                 currentMoney = (customers.get(customerName) + depositAmount);
                 customers.put(customerName, currentMoney);
                 System.out.println(("You have added $") + deposit + (" to your customerList. Your new balance is $") + (currentMoney));
@@ -73,7 +79,13 @@ public class BankAccount {
                     if (withdrawAmount > currentMoney) {
                         System.out.println("You don't have enough money bro! Go Home!");
                         aTM.askToExit();
-                    } else if (withdrawAmount < currentMoney) {
+                    }
+                    if(withdrawAmount < 0){
+                        withdrawAmount = 0;
+                        System.out.println("Incorrect amount");
+                        selectedOption();
+                    }
+                    else if (withdrawAmount < currentMoney) {
                         currentMoney = (currentMoney - withdrawAmount);
                         customers.put(customerName, currentMoney);
                         System.out.println("You withdrew $" + withdrawAmount + ". You're current balance is $" + (currentMoney));
@@ -88,6 +100,11 @@ public class BankAccount {
                 System.out.println("How much money would you like to transfer?");
                 String transfer = ATM.scanner.nextLine();
                 Integer transferAmount = Integer.valueOf(transfer);
+                if (transferAmount > currentMoney){
+                    transferAmount = 0;
+                    System.out.println("Incorrect Amount");
+                    selectedOption();
+                }
                 bMoney= customers.get(customerB);
                 bCurrentMoney = bMoney + transferAmount;
                 customers.put(customerB, bCurrentMoney);
@@ -96,7 +113,6 @@ public class BankAccount {
                 customers.put(customerName, currentMoney);
                 System.out.println("Your remaining balance is " + currentMoney);
                 aTM.askToExit();
-
             }
             if (selection.equalsIgnoreCase("5")){
                     System.out.println("Adios Amigo!");

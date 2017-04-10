@@ -18,11 +18,11 @@ public class BankAccount {
         customers.put("Keith", 100.50);//string is key in hashmap
         customers.put("Ben", 15.75);
         customers.put("Daniel", 30.10);
-        System.out.println("Hello, what is your name");
+        System.out.println("Hello, what is your name?");
         customerName = ATM.scanner.nextLine();
         currentMoney = (customers.get(customerName));
 
-        if (customers.containsKey(customerName)) {
+        if (customers.containsKey((customerName))) {
         }
         else if (!customers.containsKey(customerName)){
             System.out.println("Would you like to add an account? [y/n]");
@@ -33,15 +33,17 @@ public class BankAccount {
                 Double currentMoney = Double.valueOf(addMoney);
                 addAccount = customerName;
                 customers.put(customerName, currentMoney);
+                selectedOption();
             }
             if(addAccount.equalsIgnoreCase("n")) {
                 bankAccount.end();
                 System.exit(0);
             }
         }
+        selectedOption();
     }
         public void selectedOption() {
-            currentMoney = (customers.get(customerName));
+            currentMoney = (customers.get(customerName)); //move this up to avoid the redundant options()
             System.out.println("Please choose one of the following options");
             System.out.println("[1] view balance");
             System.out.println("[2] to make a deposit");
@@ -67,7 +69,7 @@ public class BankAccount {
                 }
                 currentMoney = (customers.get(customerName) + depositAmount);
                 customers.put(customerName, currentMoney);
-                System.out.println(("You have added $") + deposit + (" to your customerList. Your new balance is $") + (currentMoney));
+                System.out.println(("You have added $") + deposit + (" to your account. Your new balance is $") + (currentMoney));
                 aTM.askToExit();
 
             } if (selection.equalsIgnoreCase("3")) {
@@ -105,6 +107,11 @@ public class BankAccount {
                     System.out.println("Incorrect Amount");
                     selectedOption();
                 }
+                if (transferAmount < 0){
+                    transferAmount = 0;
+                    System.out.println("Incorrect Amount");
+                    selectedOption();
+                }
                 bMoney= customers.get(customerB);
                 bCurrentMoney = bMoney + transferAmount;
                 customers.put(customerB, bCurrentMoney);
@@ -117,14 +124,16 @@ public class BankAccount {
             if (selection.equalsIgnoreCase("5")){
                     System.out.println("Adios Amigo!");
                     customers.remove(customerName);
-                   account();
+                    account();
                 }
                 if (selection.equalsIgnoreCase("6")) {
                 bankAccount.end();
-                System.exit(0);
+                account();
             }
     }
     public void end() {
         System.out.println("Goodbye, sweetheart");
+        System.out.println("");
+        account();
     }
 }

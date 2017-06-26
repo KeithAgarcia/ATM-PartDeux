@@ -15,7 +15,7 @@ public class BankAccount {
     HashMap<String, Double> customers = new HashMap<>();
 
     public void account() {
-        customers.put("Keith", 100.50);//string is key in hashmap
+        customers.put("Keith", 100.50);
         customers.put("Ben", 15.75);
         customers.put("Daniel", 30.10);
         System.out.println("Hello, what is your name?");

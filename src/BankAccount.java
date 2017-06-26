@@ -43,7 +43,7 @@ public class BankAccount {
         selectedOption();
     }
         public void selectedOption() {
-            currentMoney = (customers.get(customerName)); //move this up to avoid the redundant options()
+            currentMoney = (customers.get(customerName)); 
             System.out.println("Please choose one of the following options");
             System.out.println("[1] view balance");
             System.out.println("[2] to make a deposit");
@@ -79,7 +79,7 @@ public class BankAccount {
                 Integer withdrawAmount = Integer.valueOf(withdraw);
                 {
                     if (withdrawAmount > currentMoney) {
-                        System.out.println("You don't have enough money bro! Go Home!");
+                        System.out.println("Sorry you have insufficient funds");
                         aTM.askToExit();
                     }
                     if(withdrawAmount < 0){
@@ -90,7 +90,7 @@ public class BankAccount {
                     else if (withdrawAmount < currentMoney) {
                         currentMoney = (currentMoney - withdrawAmount);
                         customers.put(customerName, currentMoney);
-                        System.out.println("You withdrew $" + withdrawAmount + ". You're current balance is $" + (currentMoney));
+                        System.out.println("You withdrew $" + withdrawAmount + ". Your current balance is $" + (currentMoney));
                         aTM.askToExit();
                     }
                 }
@@ -132,7 +132,7 @@ public class BankAccount {
             }
     }
     public void end() {
-        System.out.println("Goodbye, sweetheart");
+        System.out.println("Goodbye and have a great day!");
         System.out.println("");
         account();
     }
